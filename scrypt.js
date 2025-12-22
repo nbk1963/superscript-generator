@@ -1,35 +1,50 @@
-// script.js
+// script.js - Fixed Version
 
 document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
     const fileInput = document.getElementById('fileInput');
-    const uploadBtn = document.getElementById('uploadBtn');
+    const browseBtn = document.getElementById('browseBtn');
     const uploadArea = document.getElementById('uploadArea');
-    const selectedFileInfo = document.getElementById('selectedFileInfo');
+    const uploadSection = document.getElementById('uploadSection');
+    const selectedFileDiv = document.getElementById('selectedFile');
     const fileName = document.getElementById('fileName');
     const fileSize = document.getElementById('fileSize');
-    const removeFileBtn = document.getElementById('removeFileBtn');
+    const removeBtn = document.getElementById('removeBtn');
     const convertBtn = document.getElementById('convertBtn');
     const downloadBtn = document.getElementById('downloadBtn');
-    const progressContainer = document.getElementById('progressContainer');
+    const progressSection = document.getElementById('progressSection');
     const progressFill = document.getElementById('progressFill');
-    const progressPercentage = document.getElementById('progressPercentage');
+    const progressPercent = document.getElementById('progressPercent');
     const progressText = document.getElementById('progressText');
     
-    // File validation and state
+    // State variables
     let selectedFile = null;
     let isConverting = false;
+    let convertedFileUrl = null;
+    
+    // Initialize
+    function init() {
+        console.log('File Converter Initialized');
+        updateUI();
+        
+        // Test function for debugging
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('Debug mode active');
+            // Uncomment to test with a sample file
+            // simulateFileUpload();
+        }
+    }
     
     // Event Listeners
-    uploadBtn.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', handleFileSelect);
-    removeFileBtn.addEventListener('click', removeSelectedFile);
-    convertBtn.addEventListener('click', startConversion);
-    downloadBtn.addEventListener('click', downloadConvertedFile);
+    browseBtn.addEventListener('click', function() {
+        fileInput.click();
+    });
     
-    // Drag and drop functionality
+    fileInput.addEventListener('change', handleFileSelect);
+    
+    // Drag and Drop
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, preventDefaults, false);
+        uploadSection.addEventListener(eventName, preventDefaults, false);
     });
     
     function preventDefaults(e) {
@@ -38,215 +53,269 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     ['dragenter', 'dragover'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, highlight, false);
+        uploadSection.addEventListener(eventName, function() {
+            uploadSection.classList.add('drag-over');
+        }, false);
     });
     
     ['dragleave', 'drop'].forEach(eventName => {
-        uploadArea.addEventListener(eventName, unhighlight, false);
+        uploadSection.addEventListener(eventName, function() {
+            uploadSection.classList.remove('drag-over');
+        }, false);
     });
     
-    function highlight() {
-        uploadArea.classList.add('drag-over');
-    }
+    uploadSection.addEventListener('drop', handleDrop, false);
     
-    function unhighlight() {
-        uploadArea.classList.remove('drag-over');
-    }
-    
-    uploadArea.addEventListener('drop', handleDrop, false);
-    
-    // File handling functions
+    // File handling
     function handleFileSelect(event) {
         const file = event.target.files[0];
-        processFile(file);
+        if (file) {
+            processFile(file);
+        }
     }
     
     function handleDrop(event) {
         const file = event.dataTransfer.files[0];
-        processFile(file);
+        if (file) {
+            processFile(file);
+        }
     }
     
     function processFile(file) {
-        if (!file) return;
-        
-        // Validate file size (max 500MB)
-        const maxSize = 500 * 1024 * 1024; // 500MB in bytes
-        if (file.size > maxSize) {
-            alert('File is too large. Maximum size is 500MB.');
+        // Validate file
+        if (!validateFile(file)) {
             return;
         }
         
         selectedFile = file;
         updateFileInfo();
-        enableConvertButton();
+        updateUI();
+    }
+    
+    function validateFile(file) {
+        // Check if file exists
+        if (!file) {
+            showError('No file selected');
+            return false;
+        }
+        
+        // Check file size (max 500MB)
+        const maxSize = 500 * 1024 * 1024; // 500MB
+        if (file.size > maxSize) {
+            showError('File is too large. Maximum size is 500MB.');
+            return false;
+        }
+        
+        // Check file type (basic check)
+        const allowedTypes = [
+            'video/', 'audio/', 'image/', 'application/', 'text/'
+        ];
+        
+        const isValidType = allowedTypes.some(type => file.type.startsWith(type));
+        if (!isValidType && file.type !== '') {
+            showError('File type not supported. Please select a video, audio, image, document, or archive file.');
+            return false;
+        }
+        
+        return true;
     }
     
     function updateFileInfo() {
         if (!selectedFile) return;
         
-        // Update file name and size
         fileName.textContent = selectedFile.name;
         fileSize.textContent = formatFileSize(selectedFile.size);
         
-        // Show selected file info and hide upload area
-        selectedFileInfo.style.display = 'block';
-        uploadArea.style.display = 'none';
+        // Update file icon based on type
+        const fileIcon = document.querySelector('.file-icon');
+        if (selectedFile.type.startsWith('video/')) {
+            fileIcon.className = 'fas fa-file-video file-icon';
+        } else if (selectedFile.type.startsWith('audio/')) {
+            fileIcon.className = 'fas fa-file-audio file-icon';
+        } else if (selectedFile.type.startsWith('image/')) {
+            fileIcon.className = 'fas fa-file-image file-icon';
+        } else {
+            fileIcon.className = 'fas fa-file file-icon';
+        }
+        
+        selectedFileDiv.style.display = 'block';
     }
     
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
-        
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
-        
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
-    function removeSelectedFile() {
+    // Remove file
+    removeBtn.addEventListener('click', function() {
         selectedFile = null;
         fileInput.value = '';
-        
-        // Reset UI
-        selectedFileInfo.style.display = 'none';
-        uploadArea.style.display = 'block';
-        convertBtn.disabled = true;
-        
-        // Reset conversion progress if any
-        resetConversionProgress();
-    }
+        selectedFileDiv.style.display = 'none';
+        updateUI();
+        resetProgress();
+    });
     
-    function enableConvertButton() {
-        convertBtn.disabled = false;
-    }
-    
-    function startConversion() {
+    // Convert button
+    convertBtn.addEventListener('click', function() {
         if (!selectedFile || isConverting) return;
         
+        startConversion();
+    });
+    
+    function startConversion() {
         isConverting = true;
-        convertBtn.disabled = true;
+        updateUI();
         
-        // Show progress bar
-        progressContainer.style.display = 'block';
+        // Show progress section
+        progressSection.style.display = 'block';
         progressFill.style.width = '0%';
-        progressPercentage.textContent = '0%';
-        progressText.textContent = 'Preparing conversion...';
+        progressPercent.textContent = '0%';
+        progressText.textContent = 'Starting conversion...';
         
-        // Simulate conversion progress
+        // Simulate conversion process
         simulateConversion();
     }
     
     function simulateConversion() {
         let progress = 0;
-        const duration = 3000; // 3 seconds for simulation
-        const interval = 50; // Update every 50ms
-        const increment = 100 / (duration / interval);
+        const steps = [
+            { percent: 10, text: 'Reading file...' },
+            { percent: 30, text: 'Processing file...' },
+            { percent: 60, text: 'Converting format...' },
+            { percent: 80, text: 'Optimizing quality...' },
+            { percent: 95, text: 'Finalizing...' },
+            { percent: 100, text: 'Conversion complete!' }
+        ];
         
-        const conversionInterval = setInterval(() => {
-            progress += increment;
-            
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(conversionInterval);
-                conversionComplete();
-            }
-            
-            updateProgressBar(progress);
-            
-            // Update progress text based on progress
-            if (progress < 30) {
-                progressText.textContent = 'Analyzing file...';
-            } else if (progress < 60) {
-                progressText.textContent = 'Converting file format...';
-            } else if (progress < 90) {
-                progressText.textContent = 'Optimizing quality...';
-            } else {
-                progressText.textContent = 'Finalizing conversion...';
-            }
-        }, interval);
-    }
-    
-    function updateProgressBar(progress) {
-        const roundedProgress = Math.round(progress);
-        progressFill.style.width = `${progress}%`;
-        progressPercentage.textContent = `${roundedProgress}%`;
+        steps.forEach((step, index) => {
+            setTimeout(() => {
+                progress = step.percent;
+                progressFill.style.width = progress + '%';
+                progressPercent.textContent = progress + '%';
+                progressText.textContent = step.text;
+                
+                if (progress === 100) {
+                    conversionComplete();
+                }
+            }, index * 800); // Each step takes 0.8 seconds
+        });
     }
     
     function conversionComplete() {
         isConverting = false;
-        progressText.textContent = 'Conversion complete!';
+        
+        // Get conversion options
+        const formatSelect = document.getElementById('formatSelect');
+        const selectedFormat = formatSelect.value;
+        const selectedQuality = document.querySelector('input[name="quality"]:checked').value;
+        const selectedSize = document.getElementById('sizeSelect').value;
+        
+        // Create a simulated download link
+        createDownloadLink(selectedFormat);
         
         // Enable download button
         downloadBtn.disabled = false;
         
+        // Update progress text
+        progressText.textContent = `Ready to download! Converted to ${selectedFormat.toUpperCase()} (${selectedQuality} quality, ${selectedSize})`;
+        
+        updateUI();
+        
         // Show success message
         setTimeout(() => {
-            alert('File conversion completed successfully! Click the Download button to get your converted file.');
+            alert('✅ Conversion completed successfully!\n\nClick the "Download File" button to save your converted file.');
         }, 500);
     }
     
-    function downloadConvertedFile() {
-        if (!selectedFile) return;
-        
-        // Get selected format
-        const formatSelect = document.getElementById('formatSelect');
-        const selectedFormat = formatSelect.options[formatSelect.selectedIndex].text;
-        
-        // Create a download link for simulation
-        const originalName = selectedFile.name;
-        const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.'));
-        
-        // Get selected format extension
-        const formatExt = formatSelect.value;
-        
-        // Create a blob with simulated content (in a real app, this would be the actual converted file)
-        const content = `This is a simulation of the converted file. 
-Original: ${originalName}
-Converted to: ${selectedFormat}
-Quality: ${document.querySelector('input[name="quality"]:checked').value}
-Size: ${document.getElementById('sizeSelect').value}
-
-In a real application, this would be your actual converted file content.`;
+    function createDownloadLink(format) {
+        // Create a simulated file for download
+        const content = `This is a simulated converted file.\n\n` +
+                       `Original: ${selectedFile.name}\n` +
+                       `Converted to: ${format.toUpperCase()}\n` +
+                       `Quality: ${document.querySelector('input[name="quality"]:checked').value}\n` +
+                       `Size: ${document.getElementById('sizeSelect').value}\n` +
+                       `Date: ${new Date().toLocaleString()}\n\n` +
+                       `In a real application, this would be your actual converted file.`;
         
         const blob = new Blob([content], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
+        convertedFileUrl = URL.createObjectURL(blob);
+    }
+    
+    // Download button
+    downloadBtn.addEventListener('click', function() {
+        if (!convertedFileUrl) return;
         
-        // Create download link and trigger download
+        // Get file extension from selected format
+        const formatSelect = document.getElementById('formatSelect');
+        const format = formatSelect.value;
+        
+        // Create download link
+        const originalName = selectedFile.name;
+        const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.'));
+        const downloadName = `${nameWithoutExt}_converted.${format}`;
+        
         const a = document.createElement('a');
-        a.href = url;
-        a.download = `${nameWithoutExt}_converted.${formatExt}`;
+        a.href = convertedFileUrl;
+        a.download = downloadName;
         document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
         
-        // Cleanup
-        setTimeout(() => {
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }, 100);
-        
-        // Show success message
-        alert(`File downloaded as: ${a.download}`);
-    }
+        // Show download confirmation
+        showMessage('Download started!', 'success');
+    });
     
-    function resetConversionProgress() {
-        progressContainer.style.display = 'none';
-        progressFill.style.width = '0%';
-        progressPercentage.textContent = '0%';
-        downloadBtn.disabled = true;
-    }
-    
-    // Initialize UI
-    function init() {
-        // Set initial states
-        convertBtn.disabled = true;
-        downloadBtn.disabled = true;
-        progressContainer.style.display = 'none';
-        selectedFileInfo.style.display = 'none';
+    // UI Updates
+    function updateUI() {
+        // Update convert button state
+        convertBtn.disabled = !selectedFile || isConverting;
         
-        // Add some sample files for testing (only in development)
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            console.log('Development mode: Sample file functionality enabled');
+        // Update download button state
+        downloadBtn.disabled = !convertedFileUrl || isConverting;
+        
+        // Update button text based on state
+        if (isConverting) {
+            convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+        } else {
+            convertBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Convert Now';
         }
+    }
+    
+    function resetProgress() {
+        isConverting = false;
+        convertedFileUrl = null;
+        progressSection.style.display = 'none';
+        progressFill.style.width = '0%';
+        progressPercent.textContent = '0%';
+        updateUI();
+    }
+    
+    // Utility functions
+    function showError(message) {
+        alert('❌ ' + message);
+        console.error('Error:', message);
+    }
+    
+    function showMessage(message, type = 'info') {
+        const icon = type === 'success' ? '✅' : 'ℹ️';
+        alert(icon + ' ' + message);
+    }
+    
+    // Debug function (for testing)
+    function simulateFileUpload() {
+        const testFile = new File(['Test file content'], 'example_video.mp4', { 
+            type: 'video/mp4',
+            lastModified: Date.now()
+        });
+        
+        // Simulate file selection
+        setTimeout(() => {
+            processFile(testFile);
+            console.log('Test file loaded:', testFile);
+        }, 1000);
     }
     
     // Initialize the application
