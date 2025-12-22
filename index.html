@@ -3,207 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convert Files Online - Free File Conversion Tool</title>
-    <meta name="description" content="Convert your files online for free. Support for video, audio, image, document, and archive formats. Fast, secure, and no installation required.">
+    <title>ConvertFilesOnline - Free Online File Converter</title>
+    <meta name="description" content="Convert files online for free. Convert video, audio, images, documents, and archives. Fast, secure, no registration required.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">ConvertFiles<span>Online</span></h1>
-            <nav class="nav-links">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>ConvertFiles<span>Online</span></h1>
+            </div>
+            <nav class="navbar">
                 <a href="#" class="nav-link active">Home</a>
                 <a href="#" class="nav-link">Tools</a>
                 <a href="#" class="nav-link">Help</a>
                 <a href="#" class="nav-link">FAQ</a>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Page Title -->
-            <div class="page-title-section">
-                <h1>Convert Files Online</h1>
-                <p class="subtitle">Fast, secure, and free file conversion for video, audio, image, and document formats</p>
-            </div>
-
-            <!-- Conversion Box -->
-            <div class="conversion-box">
-                <!-- File Upload Area -->
-                <div class="upload-area" id="uploadArea">
-                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                    <h3>Select a File</h3>
-                    <p class="upload-hint">Drag & drop your file here or click to browse</p>
-                    <input type="file" id="fileInput" class="file-input" accept="*/*">
-                    <button class="btn btn-primary upload-btn" id="uploadBtn">
-                        <i class="fas fa-folder-open"></i> Browse Files
-                    </button>
-                    <p class="file-types">Supports: Video, Audio, Image, Document, Archive</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="conversion-container">
+                <div class="page-title">
+                    <h2>Convert Files Online</h2>
+                    <p class="subtitle">Drag & drop your file here or click to browse</p>
                 </div>
 
-                <!-- Selected File Info -->
-                <div class="selected-file-info" id="selectedFileInfo">
-                    <div class="file-info-header">
-                        <i class="fas fa-file-alt file-icon"></i>
-                        <div class="file-details">
-                            <h4 id="fileName">No file selected</h4>
-                            <p id="fileSize">-</p>
-                        </div>
-                        <button class="btn-remove" id="removeFileBtn">
-                            <i class="fas fa-times"></i>
+                <!-- File Upload Section -->
+                <div class="upload-section" id="uploadSection">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Select a File</h3>
+                        <p class="upload-hint">Drag & drop your file here or click to browse</p>
+                        <input type="file" id="fileInput" class="file-input" accept="*/*">
+                        <button class="btn browse-btn" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Browse Files
                         </button>
+                        <p class="file-types">Supports: Video, Audio, Image, Document, Archive</p>
+                    </div>
+
+                    <!-- Selected File Display -->
+                    <div class="selected-file" id="selectedFile" style="display: none;">
+                        <div class="file-info">
+                            <i class="fas fa-file file-icon"></i>
+                            <div class="file-details">
+                                <h4 id="fileName">No file selected</h4>
+                                <p id="fileSize">-</p>
+                            </div>
+                            <button class="remove-btn" id="removeBtn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Conversion Options -->
-                <div class="conversion-options">
-                    <!-- Format Selection -->
-                    <div class="option-group">
-                        <label for="formatSelect"><i class="fas fa-file-export"></i> Convert to</label>
-                        <select id="formatSelect" class="dropdown">
-                            <option value="mp4">MP4 - MPEG-4 Video (.mp4)</option>
-                            <option value="avi">AVI - Audio Video Interleave (.avi)</option>
-                            <option value="mkv">MKV - Matroska Video (.mkv)</option>
-                            <option value="mov">MOV - QuickTime Movie (.mov)</option>
-                            <option value="mp3">MP3 - MPEG Audio Layer III (.mp3)</option>
-                            <option value="wav">WAV - Waveform Audio (.wav)</option>
-                            <option value="jpg">JPG - JPEG Image (.jpg)</option>
-                            <option value="png">PNG - Portable Network Graphics (.png)</option>
-                            <option value="pdf">PDF - Portable Document Format (.pdf)</option>
-                        </select>
-                    </div>
-
-                    <!-- Quality Selection -->
-                    <div class="option-group">
-                        <label><i class="fas fa-chart-line"></i> Quality</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="quality" value="low" checked>
-                                <span class="radio-custom"></span>
-                                Low
+                <div class="options-section">
+                    <div class="option-row">
+                        <div class="option-group">
+                            <label for="formatSelect">
+                                <i class="fas fa-file-export"></i> Convert to
                             </label>
-                            <label class="radio-option">
-                                <input type="radio" name="quality" value="moderate">
-                                <span class="radio-custom"></span>
-                                Moderate
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="quality" value="high">
-                                <span class="radio-custom"></span>
-                                High
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="quality" value="very-high">
-                                <span class="radio-custom"></span>
-                                Very High
-                            </label>
+                            <div class="select-wrapper">
+                                <select id="formatSelect" class="format-select">
+                                    <option value="mp4">MP4 - MPEG-4 Video (.mp4)</option>
+                                    <option value="avi">AVI - Audio Video Interleave (.avi)</option>
+                                    <option value="mkv">MKV - Matroska Video (.mkv)</option>
+                                    <option value="mov">MOV - QuickTime Movie (.mov)</option>
+                                    <option value="mp3">MP3 - MP3 Audio (.mp3)</option>
+                                    <option value="wav">WAV - Waveform Audio (.wav)</option>
+                                    <option value="jpg">JPG - JPEG Image (.jpg)</option>
+                                    <option value="png">PNG - Portable Network Graphics (.png)</option>
+                                    <option value="pdf">PDF - Portable Document Format (.pdf)</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Size Selection -->
-                    <div class="option-group">
-                        <label for="sizeSelect"><i class="fas fa-expand-alt"></i> Size</label>
-                        <select id="sizeSelect" class="dropdown">
-                            <option value="same">Same size</option>
-                            <option value="smaller">Smaller</option>
-                            <option value="larger">Larger</option>
-                        </select>
+                        <div class="option-group">
+                            <label><i class="fas fa-chart-line"></i> Quality</label>
+                            <div class="quality-options">
+                                <label class="radio-label">
+                                    <input type="radio" name="quality" value="low" checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Low</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="quality" value="moderate">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Moderate</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="quality" value="high">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">High</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="quality" value="very-high">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">Very High</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="sizeSelect"><i class="fas fa-expand-alt"></i> Size</label>
+                            <div class="select-wrapper">
+                                <select id="sizeSelect" class="size-select">
+                                    <option value="same">Same size</option>
+                                    <option value="smaller">Smaller</option>
+                                    <option value="larger">Larger</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Progress Bar (Hidden by default) -->
-                <div class="progress-container" id="progressContainer">
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
                     <div class="progress-header">
                         <h4>Converting your file...</h4>
-                        <span id="progressPercentage">0%</span>
+                        <span id="progressPercent">0%</span>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
                     </div>
-                    <p class="progress-text" id="progressText">Preparing conversion...</p>
+                    <p class="progress-text" id="progressText">Initializing conversion...</p>
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="btn btn-primary btn-convert" id="convertBtn" disabled>
+                <div class="action-section">
+                    <button class="btn convert-btn" id="convertBtn" disabled>
                         <i class="fas fa-sync-alt"></i> Convert Now
                     </button>
-                    <button class="btn btn-success btn-download" id="downloadBtn" disabled>
+                    <button class="btn download-btn" id="downloadBtn" disabled>
                         <i class="fas fa-download"></i> Download File
                     </button>
                 </div>
 
                 <!-- Conversion Info -->
-                <div class="conversion-info">
-                    <div class="info-item">
+                <div class="info-section">
+                    <div class="info-card">
                         <i class="fas fa-shield-alt"></i>
                         <div>
                             <h4>Secure & Private</h4>
-                            <p>Files are deleted automatically after conversion</p>
+                            <p>Files deleted after 24 hours</p>
                         </div>
                     </div>
-                    <div class="info-item">
+                    <div class="info-card">
                         <i class="fas fa-bolt"></i>
                         <div>
                             <h4>Fast Conversion</h4>
-                            <p>Optimized for speed with cloud processing</p>
+                            <p>High-speed cloud processing</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-globe"></i>
+                    <div class="info-card">
+                        <i class="fas fa-infinity"></i>
                         <div>
-                            <h4>No Installation</h4>
-                            <p>Works directly in your browser</p>
+                            <h4>Free Forever</h4>
+                            <p>No limits, no registration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="related-tools">
+                    <h3>Related Tools</h3>
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <i class="fas fa-video"></i>
+                            <h4>VIDEO</h4>
+                            <p>MP4, AVI, MOV, WMV</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-music"></i>
+                            <h4>AUDIO</h4>
+                            <p>MP3, WAV, AAC, FLAC</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-image"></i>
+                            <h4>IMAGE</h4>
+                            <p>JPG, PNG, GIF, BMP</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-file-archive"></i>
+                            <h4>ARCHIVE</h4>
+                            <p>ZIP, RAR, 7Z, TAR</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>DOCUMENT</h4>
+                            <p>PDF, DOC, TXT, RTF</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <!-- Related Tools -->
-            <div class="related-tools">
-                <h2>Related Tools</h2>
-                <div class="tool-categories">
-                    <div class="tool-category">
-                        <h3><i class="fas fa-video"></i> VIDEO</h3>
-                        <p>MP4, AVI, MOV, WMV, FLV</p>
-                    </div>
-                    <div class="tool-category">
-                        <h3><i class="fas fa-music"></i> AUDIO</h3>
-                        <p>MP3, WAV, AAC, FLAC, OGG</p>
-                    </div>
-                    <div class="tool-category">
-                        <h3><i class="fas fa-image"></i> IMAGE</h3>
-                        <p>JPG, PNG, GIF, BMP, SVG</p>
-                    </div>
-                    <div class="tool-category">
-                        <h3><i class="fas fa-file-archive"></i> ARCHIVE</h3>
-                        <p>ZIP, RAR, 7Z, TAR, GZ</p>
-                    </div>
-                    <div class="tool-category">
-                        <h3><i class="fas fa-file-alt"></i> DOCUMENT</h3>
-                        <p>PDF, DOC, DOCX, TXT, RTF</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 ConvertFilesOnline. All rights reserved. Free online file conversion tool.</p>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 ConvertFilesOnline. Free online file conversion tool.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Us</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
                 <a href="#">About</a>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
