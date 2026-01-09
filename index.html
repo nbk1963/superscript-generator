@@ -3,578 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConvertFilesOnline - Free Online File Converter</title>
-    <meta name="description" content="Convert files online for free. Convert video, audio, images, documents, and archives. Fast, secure, no registration required.">
+    <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V4R43C5W6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9V4R43C5W6');
+  </script>
+    <!-- SEO Meta Tags -->
+    <title>Superscript Generator - Convert Text to Superscript Online</title>
+    <meta name="description" content="Free online superscript Generator. Transform normal text to superscript characters instantly for mathematical expressions, chemical formulas, and footnotes.">
+    <meta name="keywords" content="superscript generator, superscript text, text converter, online tool, math symbols">
+    <meta name="author" content="Multitoosite">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Superscript Generator - Convert Text to Superscript Online">
+    <meta property="og:description" content="Free online superscript generator. Transform normal text to superscript characters instantly.">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Superscript generator",
+        "description": "Free online tool to convert normal text to superscript characters instantly.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "url": "https://multitoosite.com/superscript-generator.html",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    <link rel="prefetch" href="https://multitoosite.com/superscript-generator.html">
+
+    </script>
+    
     <style>
-        /* Reset and Base Styles */
+        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-
+        
         .container {
-            width: 100%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
+        
         /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
         }
-
-        .logo h1 {
-            font-size: 24px;
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
             font-weight: 700;
         }
-
-        .logo span {
-            color: #ffdd40;
-        }
-
-        .navbar {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 30px;
-        }
-
-        .conversion-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .page-title h2 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
+        
         .subtitle {
-            color: #666;
-            font-size: 16px;
+            color: #7f8c8d;
+            font-size: 1.2rem;
         }
-
-        /* Upload Section */
-        .upload-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            border: 2px dashed #ced4da;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .upload-section.drag-over {
-            border-color: #667eea;
-            background: #eef2ff;
-        }
-
-        .upload-area {
-            text-align: center;
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-
-        .upload-area h3 {
-            font-size: 22px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .upload-hint {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        /* File Input - FIXED */
-        .file-input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .browse-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            z-index: 5;
-        }
-
-        .browse-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .file-types {
-            margin-top: 20px;
-            color: #6c757d;
-            font-size: 14px;
-        }
-
-        /* Selected File */
-        .selected-file {
-            background: white;
+        
+        /* Tool Container */
+        .tool-container {
+            background-color: white;
             border-radius: 10px;
-            padding: 20px;
-            border: 1px solid #e9ecef;
-            margin-top: 20px;
-            display: none;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            overflow: hidden;
         }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        
+        /* Tool Section */
+        .tool-section {
+            padding: 30px;
         }
-
-        .file-icon {
-            font-size: 32px;
-            color: #667eea;
-        }
-
-        .file-details {
-            flex: 1;
-        }
-
-        .file-details h4 {
-            color: #333;
-            margin-bottom: 5px;
-            word-break: break-all;
-        }
-
-        .file-details p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .remove-btn {
-            background: none;
-            border: none;
-            color: #dc3545;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .remove-btn:hover {
-            background: #ffeaea;
-        }
-
-        /* Options Section */
-        .options-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #e9ecef;
-        }
-
-        .option-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .option-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option-group label {
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
             font-weight: 600;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-
-        .select-wrapper {
-            position: relative;
+        
+        /* Text Areas */
+        .text-container {
+            margin-bottom: 30px;
         }
-
-        .format-select,
-        .size-select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #333;
-            background: white;
-            cursor: pointer;
-            appearance: none;
-            transition: border-color 0.3s;
-        }
-
-        .format-select:focus,
-        .size-select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .select-arrow {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            pointer-events: none;
-        }
-
-        .quality-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .radio-label:hover {
-            background: #f8f9fa;
-        }
-
-        .radio-label input {
-            display: none;
-        }
-
-        .radio-custom {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #ced4da;
-            border-radius: 50%;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .radio-label input:checked + .radio-custom {
-            border-color: #667eea;
-            background: #667eea;
-        }
-
-        .radio-label input:checked + .radio-custom::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .radio-text {
-            color: #333;
-            font-weight: 500;
-        }
-
-        /* Progress Section */
-        .progress-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #e9ecef;
-            display: none;
-        }
-
-        .progress-header {
+        
+        .text-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .progress-header h4 {
-            color: #333;
-            font-size: 18px;
-        }
-
-        #progressPercent {
-            font-weight: 700;
-            color: #667eea;
-            font-size: 20px;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
-            overflow: hidden;
             margin-bottom: 10px;
         }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            width: 0%;
-            transition: width 0.3s;
-            border-radius: 5px;
+        
+        .char-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
-
-        .progress-text {
-            color: #666;
-            font-size: 14px;
+        
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 18px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+            line-height: 1.5;
         }
-
-        /* Action Section */
-        .action-section {
+        
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        #outputText {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e1e8ed, transparent);
+            margin: 25px 0;
+        }
+        
+        /* Buttons */
+        .button-container {
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
         }
-
+        
         .btn {
-            padding: 15px 35px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 14px 28px;
             border: none;
             border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            display: inline-flex;
+            transition: all 0.3s ease;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
+            justify-content: center;
+            gap: 8px;
         }
-
-        .convert-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        
+        .btn-convert {
+            background-color: #3498db;
+            color: white;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .btn-convert:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-copy {
+            background-color: #2ecc71;
             color: white;
         }
-
-        .convert-btn:hover:not(:disabled) {
+        
+        .btn-copy:hover {
+            background-color: #27ae60;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
         }
-
-        .convert-btn:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        
+        .btn-clear {
+            background-color: #e74c3c;
             color: white;
         }
-
-        .download-btn:hover:not(:disabled) {
+        
+        .btn-clear:hover {
+            background-color: #c0392b;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.4);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
         }
-
-        .download-btn:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            opacity: 0.7;
+        
+        .btn-example {
+            background-color: #9b59b6;
+            color: white;
         }
-
-        /* Info Section */
-        .info-section {
+        
+        .btn-example:hover {
+            background-color: #8e44ad;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+        }
+        
+        /* Description Section */
+        .description-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+        }
+        
+        .description-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .description-section p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+        
+        .description-section h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+        
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .example-text {
+            font-family: 'Courier New', monospace;
+            background-color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .sup-example {
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        
+        .use-cases {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
-
-        .info-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: transform 0.3s;
+        
+        .use-case {
+            background-color: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
         }
-
-        .info-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .info-card i {
-            font-size: 24px;
-            color: #667eea;
-        }
-
-        .info-card h4 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .info-card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Related Tools */
-        .related-tools {
-            margin-top: 30px;
-        }
-
-        .related-tools h3 {
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 22px;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .tool-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-color: #667eea;
-        }
-
-        .tool-card i {
-            font-size: 28px;
-            color: #667eea;
+        
+        .use-case h4 {
+            color: #2c3e50;
             margin-bottom: 10px;
         }
-
-        .tool-card h4 {
-            color: #333;
-            margin-bottom: 5px;
+        
+        .use-case p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
         }
-
-        .tool-card p {
-            color: #666;
-            font-size: 12px;
-        }
-
+        
         /* Footer */
-        .footer {
-            background: #f8f9fa;
-            padding: 20px 30px;
+        footer {
             text-align: center;
-            border-top: 1px solid #e9ecef;
+            padding: 30px 20px;
+            color: #7f8c8d;
+            margin-top: 50px;
+            border-top: 1px solid #e1e8ed;
         }
-
-        .footer p {
-            color: #666;
-            margin-bottom: 10px;
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            max-width: 400px;
+            text-align: center;
         }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
-
-        .footer-links a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
+        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            .container {
+                padding: 15px;
             }
             
-            .navbar {
-                flex-wrap: wrap;
-                justify-content: center;
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .option-row {
-                grid-template-columns: 1fr;
+            .tool-section {
+                padding: 20px;
             }
             
-            .action-section {
+            .button-container {
                 flex-direction: column;
             }
             
@@ -583,30 +358,30 @@
                 justify-content: center;
             }
             
-            .info-section {
+            .use-cases {
                 grid-template-columns: 1fr;
             }
             
-            .tools-grid {
-                grid-template-columns: repeat(2, 1fr);
+            textarea {
+                min-height: 150px;
             }
         }
-
+        
         @media (max-width: 480px) {
-            .main-content {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+            }
+            
+            .description-section {
                 padding: 20px;
-            }
-            
-            .upload-section {
-                padding: 20px;
-            }
-            
-            .page-title h2 {
-                font-size: 24px;
-            }
-            
-            .tools-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -614,626 +389,304 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <h1>ConvertFiles<span>Online</span></h1>
-            </div>
-            <nav class="navbar">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#" class="nav-link">Tools</a>
-                <a href="#" class="nav-link">Help</a>
-                <a href="#" class="nav-link">FAQ</a>
-            </nav>
+        <header>
+            <h1>Superscript Generator</h1>
+            <p class="subtitle">Transform normal text to superscript instantly</p>
         </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="conversion-container">
-                <div class="page-title">
-                    <h2>Convert Files Online</h2>
-                    <p class="subtitle">Drag & drop your file here or click to browse</p>
+        
+        <!-- Tool Container -->
+        <div class="tool-container">
+            <div class="tool-section">
+                <!-- Normal Text Section -->
+                <div class="text-container">
+                    <h2 class="section-title">Normal Text</h2>
+                    <div class="text-header">
+                        <div>Type or paste your text here. Example: <span style="color: #7f8c8d; font-style: italic;">x^2 + y^2 = z^2 or H2O</span></div>
+                        <div class="char-count">Characters: <span id="inputCharCount">0</span></div>
+                    </div>
+                    <textarea id="inputText" placeholder="Enter your text here..."></textarea>
                 </div>
-
-                <!-- File Upload Section -->
-                <div class="upload-section" id="uploadSection">
-                    <div class="upload-area" id="uploadArea">
-                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                        <h3>Select a File</h3>
-                        <p class="upload-hint">Drag & drop your file here or click to browse</p>
-                        <!-- FIXED: File input covers the entire area -->
-                        <input type="file" id="fileInput" class="file-input" accept="*/*">
-                        <button class="btn browse-btn" id="browseBtn">
-                            <i class="fas fa-folder-open"></i> Browse Files
-                        </button>
-                        <p class="file-types">Supports: Video, Audio, Image, Document, Archive</p>
+                
+                <!-- Divider -->
+                <div class="divider"></div>
+                
+                <!-- Superscript Text Section -->
+                <div class="text-container">
+                    <h2 class="section-title">Superscript Text</h2>
+                    <div class="text-header">
+                        <div>Your superscript text will appear here</div>
+                        <div class="char-count">Characters: <span id="outputCharCount">0</span></div>
                     </div>
-
-                    <!-- Selected File Display -->
-                    <div class="selected-file" id="selectedFile">
-                        <div class="file-info">
-                            <i class="fas fa-file file-icon"></i>
-                            <div class="file-details">
-                                <h4 id="fileName">No file selected</h4>
-                                <p id="fileSize">-</p>
-                            </div>
-                            <button class="remove-btn" id="removeBtn">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <textarea id="outputText" readonly></textarea>
                 </div>
-
-                <!-- Conversion Options -->
-                <div class="options-section">
-                    <div class="option-row">
-                        <div class="option-group">
-                            <label for="formatSelect">
-                                <i class="fas fa-file-export"></i> Convert to
-                            </label>
-                            <div class="select-wrapper">
-                                <select id="formatSelect" class="format-select">
-                                    <option value="mp4">MP4 - MPEG-4 Video (.mp4)</option>
-                                    <option value="avi">AVI - Audio Video Interleave (.avi)</option>
-                                    <option value="mkv">MKV - Matroska Video (.mkv)</option>
-                                    <option value="mov">MOV - QuickTime Movie (.mov)</option>
-                                    <option value="mp3">MP3 - MP3 Audio (.mp3)</option>
-                                    <option value="wav">WAV - Waveform Audio (.wav)</option>
-                                    <option value="jpg">JPG - JPEG Image (.jpg)</option>
-                                    <option value="png">PNG - Portable Network Graphics (.png)</option>
-                                    <option value="pdf">PDF - Portable Document Format (.pdf)</option>
-                                </select>
-                                <i class="fas fa-chevron-down select-arrow"></i>
-                            </div>
-                        </div>
-
-                        <div class="option-group">
-                            <label><i class="fas fa-chart-line"></i> Quality</label>
-                            <div class="quality-options">
-                                <label class="radio-label">
-                                    <input type="radio" name="quality" value="low" checked>
-                                    <span class="radio-custom"></span>
-                                    <span class="radio-text">Low</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="quality" value="moderate">
-                                    <span class="radio-custom"></span>
-                                    <span class="radio-text">Moderate</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="quality" value="high">
-                                    <span class="radio-custom"></span>
-                                    <span class="radio-text">High</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="quality" value="very-high">
-                                    <span class="radio-custom"></span>
-                                    <span class="radio-text">Very High</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="option-group">
-                            <label for="sizeSelect"><i class="fas fa-expand-alt"></i> Size</label>
-                            <div class="select-wrapper">
-                                <select id="sizeSelect" class="size-select">
-                                    <option value="same">Same size</option>
-                                    <option value="smaller">Smaller</option>
-                                    <option value="larger">Larger</option>
-                                </select>
-                                <i class="fas fa-chevron-down select-arrow"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Progress Section -->
-                <div class="progress-section" id="progressSection">
-                    <div class="progress-header">
-                        <h4>Converting your file...</h4>
-                        <span id="progressPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <p class="progress-text" id="progressText">Initializing conversion...</p>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="action-section">
-                    <button class="btn convert-btn" id="convertBtn" disabled>
-                        <i class="fas fa-sync-alt"></i> Convert Now
+                
+                <!-- Buttons -->
+                <div class="button-container">
+                    <button class="btn btn-convert" id="convertBtn">
+                        <span>Convert to Superscript</span>
                     </button>
-                    <button class="btn download-btn" id="downloadBtn" disabled>
-                        <i class="fas fa-download"></i> Download File
+                    <button class="btn btn-copy" id="copyBtn">
+                        <span>Copy Output</span>
                     </button>
-                </div>
-
-                <!-- Conversion Info -->
-                <div class="info-section">
-                    <div class="info-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <div>
-                            <h4>Secure & Private</h4>
-                            <p>Files deleted after 24 hours</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-bolt"></i>
-                        <div>
-                            <h4>Fast Conversion</h4>
-                            <p>High-speed cloud processing</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <i class="fas fa-infinity"></i>
-                        <div>
-                            <h4>Free Forever</h4>
-                            <p>No limits, no registration</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Related Tools -->
-                <div class="related-tools">
-                    <h3>Related Tools</h3>
-                    <div class="tools-grid">
-                        <div class="tool-card">
-                            <i class="fas fa-video"></i>
-                            <h4>VIDEO</h4>
-                            <p>MP4, AVI, MOV, WMV</p>
-                        </div>
-                        <div class="tool-card">
-                            <i class="fas fa-music"></i>
-                            <h4>AUDIO</h4>
-                            <p>MP3, WAV, AAC, FLAC</p>
-                        </div>
-                        <div class="tool-card">
-                            <i class="fas fa-image"></i>
-                            <h4>IMAGE</h4>
-                            <p>JPG, PNG, GIF, BMP</p>
-                        </div>
-                        <div class="tool-card">
-                            <i class="fas fa-file-archive"></i>
-                            <h4>ARCHIVE</h4>
-                            <p>ZIP, RAR, 7Z, TAR</p>
-                        </div>
-                        <div class="tool-card">
-                            <i class="fas fa-file-alt"></i>
-                            <h4>DOCUMENT</h4>
-                            <p>PDF, DOC, TXT, RTF</p>
-                        </div>
-                    </div>
+                    <button class="btn btn-clear" id="clearBtn">
+                        <span>Clear Text</span>
+                    </button>
+                    <button class="btn btn-example" id="exampleBtn">
+                        <span>Load Example</span>
+                    </button>
                 </div>
             </div>
-        </main>
-
+        </div>
+        
+        <!-- Description Section -->
+        <div class="description-section">
+            <h2>About the Superscript Generator</h2>
+            <p>
+                The Superscript Generator is a free online tool that transforms standard text characters into their superscript equivalents. 
+                Superscript text appears slightly above the normal line and is smaller in size, commonly used in mathematical expressions, 
+                scientific notation, footnotes, and chemical formulas.
+            </p>
+            
+            <div class="example-box">
+                <div class="example-title">Example Conversion:</div>
+                <div class="example-text">Normal: x^2 + y^2 = z^2</div>
+                <div class="example-text sup-example">Superscript: x² + y² = z²</div>
+            </div>
+            
+            <h3>How to Use the Converter</h3>
+            <p>
+                1. Type or paste your text in the "Normal Text" field above.<br>
+                2. Click "Convert to Superscript" to transform your text.<br>
+                3. Copy the superscript result using the "Copy Output" button.<br>
+                4. Paste the superscript text into your document, website, or application.
+            </p>
+            
+            <h3>Common Use Cases</h3>
+            <div class="use-cases">
+                <div class="use-case">
+                    <h4>Mathematical Expressions</h4>
+                    <p>Convert exponents and powers in equations: 2³ = 8, (a+b)² = a² + 2ab + b²</p>
+                </div>
+                <div class="use-case">
+                    <h4>Scientific Formulas</h4>
+                    <p>Create chemical formulas: H₂O (water), CO₂ (carbon dioxide), C₆H₁₂O₆ (glucose)</p>
+                </div>
+                <div class="use-case">
+                    <h4>Footnotes & References</h4>
+                    <p>Add footnote indicators: The study concluded¹ that... Further research² suggests...</p>
+                </div>
+                <div class="use-case">
+                    <h4>Ordinal Numbers</h4>
+                    <p>Format ordinal indicators: 1ˢᵗ place, 2ⁿᵈ place, 3ʳᵈ place, 4ᵗʰ place</p>
+                </div>
+            </div>
+            
+            <h3>Supported Characters</h3>
+            <p>
+                Our converter supports all digits (0-9), lowercase letters (a-z), uppercase letters (A-Z), and common mathematical symbols 
+                (+, -, =, (, )). Characters not in this set will remain unchanged. The tool preserves spaces, line breaks, and formatting.
+            </p>
+        </div>
+        
         <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2023 ConvertFilesOnline. Free online file conversion tool.</p>
-            <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Contact</a>
-                <a href="#">About</a>
-            </div>
+        <footer>
+            <p>&copy; <span id="currentYear"></span> Multitoosite. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Free online tool for converting text to superscript characters.</p>
         </footer>
     </div>
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+    
     <script>
-        // Single-file JavaScript with all fixes
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('File Converter Initialized');
+        // DOM Elements
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const convertBtn = document.getElementById('convertBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const exampleBtn = document.getElementById('exampleBtn');
+        const inputCharCount = document.getElementById('inputCharCount');
+        const outputCharCount = document.getElementById('outputCharCount');
+        const toast = document.getElementById('toast');
+        const currentYear = document.getElementById('currentYear');
+        
+        // Superscript character mapping
+        const superscriptMap = {
+            '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', 
+            '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+            'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ', 'f': 'ᶠ', 
+            'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ', 'k': 'ᵏ', 'l': 'ˡ', 
+            'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ', 'p': 'ᵖ', 'q': 'ᵠ', 'r': 'ʳ', 
+            's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ', 'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 
+            'y': 'ʸ', 'z': 'ᶻ',
+            'A': 'ᴬ', 'B': 'ᴮ', 'C': 'ᶜ', 'D': 'ᴰ', 'E': 'ᴱ', 'F': 'ᶠ', 
+            'G': 'ᴳ', 'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ', 'K': 'ᴷ', 'L': 'ᴸ', 
+            'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'Q': 'ᵠ', 'R': 'ᴿ', 
+            'S': 'ˢ', 'T': 'ᵀ', 'U': 'ᵁ', 'V': 'ⱽ', 'W': 'ᵂ', 'X': 'ˣ', 
+            'Y': 'ʸ', 'Z': 'ᶻ',
+            '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾'
+        };
+        
+        // Set current year in footer
+        currentYear.textContent = new Date().getFullYear();
+        
+        // Update character counters
+        function updateCharCounters() {
+            inputCharCount.textContent = inputText.value.length;
+            outputCharCount.textContent = outputText.value.length;
+        }
+        
+        // Show toast notification
+        function showToast(message, duration = 3000) {
+            toast.textContent = message;
+            toast.classList.add('show');
             
-            // Get DOM elements
-            const fileInput = document.getElementById('fileInput');
-            const browseBtn = document.getElementById('browseBtn');
-            const uploadSection = document.getElementById('uploadSection');
-            const selectedFileDiv = document.getElementById('selectedFile');
-            const fileName = document.getElementById('fileName');
-            const fileSize = document.getElementById('fileSize');
-            const removeBtn = document.getElementById('removeBtn');
-            const convertBtn = document.getElementById('convertBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const progressSection = document.getElementById('progressSection');
-            const progressFill = document.getElementById('progressFill');
-            const progressPercent = document.getElementById('progressPercent');
-            const progressText = document.getElementById('progressText');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+        
+        // Convert text to superscript
+        function convertToSuperscript(text) {
+            let result = '';
             
-            // State variables
-            let selectedFile = null;
-            let isConverting = false;
-            let convertedFileUrl = null;
-            
-            // Initialize UI
-            function initializeUI() {
-                console.log('Initializing UI...');
-                
-                // Hide selected file section initially
-                selectedFileDiv.style.display = 'none';
-                progressSection.style.display = 'none';
-                
-                // Disable buttons initially
-                convertBtn.disabled = true;
-                downloadBtn.disabled = true;
-                
-                // Add click event to browse button
-                browseBtn.addEventListener('click', function() {
-                    console.log('Browse button clicked');
-                    fileInput.click();
-                });
-                
-                // Add change event to file input
-                fileInput.addEventListener('change', function(event) {
-                    console.log('File input changed');
-                    handleFileSelect(event);
-                });
-                
-                // Add click event to remove button
-                removeBtn.addEventListener('click', function() {
-                    console.log('Remove button clicked');
-                    removeSelectedFile();
-                });
-                
-                // Add click event to convert button
-                convertBtn.addEventListener('click', function() {
-                    console.log('Convert button clicked');
-                    startConversion();
-                });
-                
-                // Add click event to download button
-                downloadBtn.addEventListener('click', function() {
-                    console.log('Download button clicked');
-                    downloadConvertedFile();
-                });
-                
-                // Setup drag and drop
-                setupDragAndDrop();
-                
-                // Test mode for debugging
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                    console.log('Debug mode: Enabled');
-                    // Uncomment to auto-load a test file
-                    // setTimeout(loadTestFile, 1000);
-                }
-            }
-            
-            // Setup drag and drop functionality
-            function setupDragAndDrop() {
-                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                    uploadSection.addEventListener(eventName, preventDefaults, false);
-                });
-                
-                function preventDefaults(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                
-                ['dragenter', 'dragover'].forEach(eventName => {
-                    uploadSection.addEventListener(eventName, function() {
-                        uploadSection.classList.add('drag-over');
-                    }, false);
-                });
-                
-                ['dragleave', 'drop'].forEach(eventName => {
-                    uploadSection.addEventListener(eventName, function() {
-                        uploadSection.classList.remove('drag-over');
-                    }, false);
-                });
-                
-                uploadSection.addEventListener('drop', function(event) {
-                    console.log('File dropped');
-                    const file = event.dataTransfer.files[0];
-                    if (file) {
-                        processFile(file);
-                    }
-                }, false);
-            }
-            
-            // Handle file selection
-            function handleFileSelect(event) {
-                console.log('Handling file select');
-                const file = event.target.files[0];
-                if (file) {
-                    processFile(file);
-                }
-            }
-            
-            // Process selected file
-            function processFile(file) {
-                console.log('Processing file:', file.name);
-                
-                // Validate file
-                if (!validateFile(file)) {
-                    return;
-                }
-                
-                selectedFile = file;
-                updateFileDisplay();
-                enableConvertButton();
-            }
-            
-            // Validate file
-            function validateFile(file) {
-                console.log('Validating file...');
-                
-                if (!file) {
-                    showError('No file selected');
-                    return false;
-                }
-                
-                // Check file size (max 500MB)
-                const maxSize = 500 * 1024 * 1024;
-                if (file.size > maxSize) {
-                    showError('File is too large. Maximum size is 500MB.');
-                    return false;
-                }
-                
-                // Check file type
-                const allowedTypes = [
-                    'video/', 'audio/', 'image/', 'application/', 'text/', ''
-                ];
-                
-                const isValidType = allowedTypes.some(type => file.type.startsWith(type));
-                if (!isValidType) {
-                    showError('File type not supported. Please select a video, audio, image, document, or archive file.');
-                    return false;
-                }
-                
-                console.log('File validation passed');
-                return true;
-            }
-            
-            // Update file display
-            function updateFileDisplay() {
-                if (!selectedFile) return;
-                
-                console.log('Updating file display');
-                
-                // Update file info
-                fileName.textContent = selectedFile.name;
-                fileSize.textContent = formatFileSize(selectedFile.size);
-                
-                // Update file icon based on type
-                const fileIcon = document.querySelector('.file-icon');
-                if (selectedFile.type.startsWith('video/')) {
-                    fileIcon.className = 'fas fa-file-video file-icon';
-                } else if (selectedFile.type.startsWith('audio/')) {
-                    fileIcon.className = 'fas fa-file-audio file-icon';
-                } else if (selectedFile.type.startsWith('image/')) {
-                    fileIcon.className = 'fas fa-file-image file-icon';
-                } else if (selectedFile.type.startsWith('text/')) {
-                    fileIcon.className = 'fas fa-file-alt file-icon';
-                } else if (selectedFile.type.includes('pdf')) {
-                    fileIcon.className = 'fas fa-file-pdf file-icon';
-                } else if (selectedFile.type.includes('zip') || selectedFile.type.includes('rar')) {
-                    fileIcon.className = 'fas fa-file-archive file-icon';
+            for (let char of text) {
+                if (superscriptMap[char]) {
+                    result += superscriptMap[char];
                 } else {
-                    fileIcon.className = 'fas fa-file file-icon';
+                    // Keep spaces, line breaks, and unsupported characters
+                    result += char;
                 }
-                
-                // Show selected file section
-                selectedFileDiv.style.display = 'block';
             }
             
-            // Format file size
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            return result;
+        }
+        
+        // Handle conversion
+        function handleConversion() {
+            const text = inputText.value;
+            
+            if (!text.trim()) {
+                showToast('Please enter some text to convert');
+                return;
             }
             
-            // Enable convert button
-            function enableConvertButton() {
-                console.log('Enabling convert button');
-                convertBtn.disabled = false;
-                convertBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Convert Now';
+            const superscriptText = convertToSuperscript(text);
+            outputText.value = superscriptText;
+            updateCharCounters();
+            
+            showToast('Text converted to superscript successfully!');
+        }
+        
+        // Copy output to clipboard
+        function copyToClipboard() {
+            if (!outputText.value.trim()) {
+                showToast('No superscript text to copy');
+                return;
             }
             
-            // Remove selected file
-            function removeSelectedFile() {
-                console.log('Removing selected file');
-                selectedFile = null;
-                fileInput.value = '';
-                selectedFileDiv.style.display = 'none';
-                convertBtn.disabled = true;
-                resetConversion();
+            outputText.select();
+            outputText.setSelectionRange(0, 99999);
+            
+            try {
+                navigator.clipboard.writeText(outputText.value)
+                    .then(() => {
+                        showToast('Superscript text copied to clipboard!');
+                    })
+                    .catch(err => {
+                        // Fallback for older browsers
+                        document.execCommand('copy');
+                        showToast('Superscript text copied to clipboard!');
+                    });
+            } catch (err) {
+                document.execCommand('copy');
+                showToast('Superscript text copied to clipboard!');
+            }
+        }
+        
+        // Clear all text
+        function clearText() {
+            inputText.value = '';
+            outputText.value = '';
+            updateCharCounters();
+            inputText.focus();
+            showToast('Text cleared');
+        }
+        
+        // Load example text
+        function loadExample() {
+            const examples = [
+                "x^2 + y^2 = z^2",
+                "E = mc^2 (Einstein's mass-energy equivalence)",
+                "Chemical formulas: H2O, CO2, CH4, C6H12O6",
+                "Quadratic formula: x = [-b ± √(b^2 - 4ac)] / 2a",
+                "Footnotes: According to recent studies^1, the results^2 indicate...",
+                "Ordinal numbers: 1st, 2nd, 3rd, 4th, 5th",
+                "Math: (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            ];
+            
+            const randomIndex = Math.floor(Math.random() * examples.length);
+            inputText.value = examples[randomIndex];
+            handleConversion();
+            showToast('Example text loaded');
+        }
+        
+        // Event Listeners
+        convertBtn.addEventListener('click', handleConversion);
+        copyBtn.addEventListener('click', copyToClipboard);
+        clearBtn.addEventListener('click', clearText);
+        exampleBtn.addEventListener('click', loadExample);
+        
+        // Update character count on input
+        inputText.addEventListener('input', updateCharCounters);
+        
+        // Auto-convert as user types (with delay)
+        let conversionTimeout;
+        inputText.addEventListener('input', () => {
+            clearTimeout(conversionTimeout);
+            
+            // Only auto-convert if there's text
+            if (inputText.value.trim()) {
+                conversionTimeout = setTimeout(handleConversion, 800);
+            }
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + Enter to convert
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                handleConversion();
             }
             
-            // Start conversion
-            function startConversion() {
-                if (!selectedFile || isConverting) {
-                    console.log('Cannot start conversion: no file or already converting');
-                    return;
-                }
-                
-                console.log('Starting conversion');
-                isConverting = true;
-                
-                // Update UI
-                convertBtn.disabled = true;
-                convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
-                progressSection.style.display = 'block';
-                
-                // Reset progress bar
-                progressFill.style.width = '0%';
-                progressPercent.textContent = '0%';
-                progressText.textContent = 'Starting conversion...';
-                
-                // Simulate conversion process
-                simulateConversion();
+            // Ctrl/Cmd + C to copy (when output has content)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c' && outputText.value) {
+                copyToClipboard();
             }
             
-            // Simulate conversion
-            function simulateConversion() {
-                console.log('Simulating conversion');
-                
-                let progress = 0;
-                const steps = [
-                    { percent: 10, text: 'Reading file...' },
-                    { percent: 25, text: 'Validating file format...' },
-                    { percent: 40, text: 'Processing file data...' },
-                    { percent: 55, text: 'Converting format...' },
-                    { percent: 70, text: 'Applying quality settings...' },
-                    { percent: 85, text: 'Optimizing file size...' },
-                    { percent: 95, text: 'Finalizing conversion...' },
-                    { percent: 100, text: 'Conversion complete!' }
-                ];
-                
-                steps.forEach((step, index) => {
-                    setTimeout(() => {
-                        progress = step.percent;
-                        progressFill.style.width = progress + '%';
-                        progressPercent.textContent = progress + '%';
-                        progressText.textContent = step.text;
-                        
-                        if (progress === 100) {
-                            conversionComplete();
-                        }
-                    }, index * 600); // Each step takes 0.6 seconds
-                });
+            // Escape to clear
+            if (e.key === 'Escape') {
+                clearText();
             }
+        });
+        
+        // Initialize with example on first load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCharCounters();
             
-            // Conversion complete
-            function conversionComplete() {
-                console.log('Conversion complete');
-                isConverting = false;
-                
-                // Get conversion options
-                const formatSelect = document.getElementById('formatSelect');
-                const selectedFormat = formatSelect.value;
-                const selectedQuality = document.querySelector('input[name="quality"]:checked').value;
-                const selectedSize = document.getElementById('sizeSelect').value;
-                
-                // Create simulated download
-                createDownloadLink(selectedFormat);
-                
-                // Enable download button
-                downloadBtn.disabled = false;
-                
-                // Update progress text
-                progressText.textContent = `Ready to download! Converted to ${selectedFormat.toUpperCase()} format`;
-                
-                // Update convert button
-                convertBtn.innerHTML = '<i class="fas fa-check"></i> Conversion Complete';
-                
-                // Show success message
+            // Load example after a short delay on first visit
+            if (!localStorage.getItem('superscriptVisited')) {
                 setTimeout(() => {
-                    alert('✅ Conversion completed successfully!\n\nYour file has been converted and is ready to download.');
-                }, 500);
+                    if (!inputText.value.trim()) {
+                        loadExample();
+                    }
+                }, 800);
+                localStorage.setItem('superscriptVisited', 'true');
             }
             
-            // Create download link
-            function createDownloadLink(format) {
-                console.log('Creating download link for format:', format);
-                
-                // Create simulated file content
-                const content = `Converted File Information\n\n` +
-                               `Original File: ${selectedFile.name}\n` +
-                               `Original Size: ${formatFileSize(selectedFile.size)}\n` +
-                               `Converted Format: ${format.toUpperCase()}\n` +
-                               `Quality Setting: ${document.querySelector('input[name="quality"]:checked').value}\n` +
-                               `Size Setting: ${document.getElementById('sizeSelect').value}\n` +
-                               `Conversion Date: ${new Date().toLocaleString()}\n\n` +
-                               `This is a simulation. In a real application, this would be your actual converted file content.\n` +
-                               `The original file was processed and converted to ${format.toUpperCase()} format.\n`;
-                
-                const blob = new Blob([content], { type: 'text/plain' });
-                convertedFileUrl = URL.createObjectURL(blob);
-                
-                console.log('Download link created:', convertedFileUrl);
-            }
-            
-            // Download converted file
-            function downloadConvertedFile() {
-                if (!convertedFileUrl) {
-                    console.log('No converted file available');
-                    return;
-                }
-                
-                console.log('Downloading converted file');
-                
-                // Get file extension from selected format
-                const formatSelect = document.getElementById('formatSelect');
-                const format = formatSelect.value;
-                
-                // Create download filename
-                const originalName = selectedFile.name;
-                const nameWithoutExt = originalName.substring(0, originalName.lastIndexOf('.'));
-                const downloadName = `${nameWithoutExt}_converted.${format}`;
-                
-                // Create and trigger download
-                const link = document.createElement('a');
-                link.href = convertedFileUrl;
-                link.download = downloadName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Show download confirmation
-                showMessage('Download started! Your file should begin downloading shortly.', 'success');
-            }
-            
-            // Reset conversion
-            function resetConversion() {
-                console.log('Resetting conversion');
-                isConverting = false;
-                convertedFileUrl = null;
-                progressSection.style.display = 'none';
-                progressFill.style.width = '0%';
-                progressPercent.textContent = '0%';
-                downloadBtn.disabled = true;
-                convertBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Convert Now';
-            }
-            
-            // Show error message
-            function showError(message) {
-                console.error('Error:', message);
-                alert('❌ ' + message);
-            }
-            
-            // Show message
-            function showMessage(message, type = 'info') {
-                const icon = type === 'success' ? '✅' : 'ℹ️';
-                console.log(type + ':', message);
-                alert(icon + ' ' + message);
-            }
-            
-            // Test function (for debugging)
-            function loadTestFile() {
-                console.log('Loading test file...');
-                const testFile = new File(['Test file content for conversion simulation'], 'example_video.mp4', { 
-                    type: 'video/mp4'
-                });
-                
-                // Simulate file selection
-                processFile(testFile);
-                console.log('Test file loaded:', testFile.name);
-                
-                // Show test mode indicator
-                const testIndicator = document.createElement('div');
-                testIndicator.style.cssText = `
-                    position: fixed;
-                    top: 10px;
-                    right: 10px;
-                    background: #667eea;
-                    color: white;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    font-size: 12px;
-                    z-index: 1000;
-                `;
-                testIndicator.textContent = 'TEST MODE';
-                document.body.appendChild(testIndicator);
-            }
-            
-            // Initialize the application
-            initializeUI();
-            console.log('Application ready');
+            // Focus on input field
+            inputText.focus();
         });
     </script>
 </body>
