@@ -1,251 +1,693 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Subscript Generator – Convert Text to Subscript Online</title>
-<meta name="description" content="Free subscript generator tool. Convert normal text into subscript letters and numbers online instantly. No signup, fast and secure.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://www.multitoosite.com/subscript-generator.html">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Subscript Generator",
-  "operatingSystem": "All",
-  "applicationCategory": "UtilityApplication",
-  "browserRequirements": "Requires JavaScript",
-  "url": "https://www.multitoosite.com/subscript-generator.html",
-  "description": "Free online subscript generator to convert normal text into subscript characters instantly.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V4R43C5W6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9V4R43C5W6');
+  </script>
+    <!-- SEO Meta Tags -->
+    <title>Superscript Generator - Convert Text to Superscript Online</title>
+    <meta name="description" content="Free online superscript Generator. Transform normal text to superscript characters instantly for mathematical expressions, chemical formulas, and footnotes.">
+    <meta name="keywords" content="superscript generator, superscript text, text converter, online tool, math symbols">
+    <meta name="author" content="Multitoosite">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Superscript Generator - Convert Text to Superscript Online">
+    <meta property="og:description" content="Free online superscript generator. Transform normal text to superscript characters instantly.">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
     {
-      "@type": "Question",
-      "name": "Is this subscript generator free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this subscript generator is completely free and does not require signup."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, the subscript generator works on all mobile, tablet, and desktop devices."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my text saved or uploaded?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, all text conversion happens locally in your browser for privacy."
-      }
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Superscript generator",
+        "description": "Free online tool to convert normal text to superscript characters instantly.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "url": "https://multitoosite.com/superscript-generator.html",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
-  ]
-}
-</script>
+    <link rel="prefetch" href="https://multitoosite.com/superscript-generator.html">
 
-<style>
-html, body {
-  background: #ffffff;
-  font-family: Inter, Arial, sans-serif;
-  color: #1f2937;
-  margin: 0;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-p {
-  color: #555;
-  line-height: 1.6;
-}
-
-.tool-box {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
-  padding: 20px;
-  margin-top: 20px;
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  resize: vertical;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-button {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-size: .95rem;
-  cursor: pointer;
-}
-
-button.secondary {
-  background: #e5e7eb;
-  color: #111;
-}
-
-button:hover {
-  opacity: .9;
-}
-
-.output {
-  margin-top: 16px;
-}
-
-footer {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #e5e7eb;
-  font-size: .9rem;
-  color: #666;
-}
-</style>
+    </script>
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        /* Tool Container */
+        .tool-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        /* Tool Section */
+        .tool-section {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 600;
+        }
+        
+        /* Text Areas */
+        .text-container {
+            margin-bottom: 30px;
+        }
+        
+        .text-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .char-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 18px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+            line-height: 1.5;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        #outputText {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e1e8ed, transparent);
+            margin: 25px 0;
+        }
+        
+        /* Buttons */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-convert {
+            background-color: #3498db;
+            color: white;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .btn-convert:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-copy {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .btn-copy:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-clear {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn-clear:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-example {
+            background-color: #9b59b6;
+            color: white;
+        }
+        
+        .btn-example:hover {
+            background-color: #8e44ad;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+        }
+        
+        /* Description Section */
+        .description-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+        }
+        
+        .description-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .description-section p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+        
+        .description-section h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+        
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .example-text {
+            font-family: 'Courier New', monospace;
+            background-color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .sup-example {
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+        
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .use-case {
+            background-color: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+        }
+        
+        .use-case h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .use-case p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #7f8c8d;
+            margin-top: 50px;
+            border-top: 1px solid #e1e8ed;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tool-section {
+                padding: 20px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .use-cases {
+                grid-template-columns: 1fr;
+            }
+            
+            textarea {
+                min-height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+            }
+            
+            .description-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="container">
-
-<h1>Subscript Generator</h1>
-<p>
-Convert normal text into <strong>subscript characters</strong> instantly.
-Useful for chemistry formulas, math expressions, scientific writing, and more.
-</p>
-
-<div class="tool-box">
-  <label><strong>Enter Text</strong></label>
-  <textarea id="inputText" placeholder="Type your text here..."></textarea>
-
-  <div class="buttons">
-    <button onclick="convertText()">Convert to Subscript</button>
-    <button class="secondary" onclick="copyText()">Copy</button>
-    <button class="secondary" onclick="clearText()">Clear</button>
-  </div>
-
-  <div class="output">
-    <label><strong>Subscript Output</strong></label>
-    <textarea id="outputText" readonly></textarea>
-  </div>
-</div>
-
-<!-- SEO CONTENT -->
-<section style="margin-top:40px">
-
-<h2>What is a Subscript Generator?</h2>
-<p>
-A <strong>subscript generator</strong> converts normal text into smaller,
-lower-positioned Unicode characters. Subscripts are commonly used in
-chemistry formulas (H₂O), mathematics, physics, and academic writing.
-</p>
-
-<h2>How to Use This Subscript Generator</h2>
-<ol>
-  <li>Enter your text or numbers in the input box</li>
-  <li>Click <strong>Convert to Subscript</strong></li>
-  <li>Copy the converted subscript text</li>
-</ol>
-
-<h2>Frequently Asked Questions</h2>
-
-<h3>Is this subscript generator free?</h3>
-<p>
-Yes. This online subscript generator is 100% free and does not require signup.
-</p>
-
-<h3>Does it work on mobile devices?</h3>
-<p>
-Yes. The tool works perfectly on mobile, tablet, and desktop devices.
-</p>
-
-<h3>Is my text saved or uploaded?</h3>
-<p>
-No. All conversions happen locally in your browser for complete privacy.
-</p>
-
-<h2>About MultiTooSite</h2>
-<p>
-<a href="/">multitoosite</a> provides fast, secure, and free online tools
-including text generators, image compressors, file converters, calculators,
-and developer utilities. No installation or registration required.
-</p>
-
-<p>
-Try our
-<a href="https://multitoosite.com/superscript-generator.html">Superscript Generator</a>,
-<a href="https://multitoosite.com/image-compressor.html">Image Compressor</a>,
-  <a href="https://multitoosite.com">multitoosite</a>,
-and many other free tools.
-</p>
-
-</section>
-<script>
-const map = {
-  0:"₀",1:"₁",2:"₂",3:"₃",4:"₄",5:"₅",6:"₆",7:"₇",8:"₈",9:"₉",
-  a:"ₐ", e:"ₑ", h:"ₕ", i:"ᵢ", j:"ⱼ", k:"ₖ", l:"ₗ", m:"ₘ",
-  n:"ₙ", o:"ₒ", p:"ₚ", r:"ᵣ", s:"ₛ", t:"ₜ", u:"ᵤ", v:"ᵥ", x:"ₓ",
-  "+":"₊","-":"₋","=":"₌","(":"₍",")":"₎"
-};
-
-function convertText() {
-  const input = document.getElementById("inputText").value;
-  let result = "";
-  for (let char of input) {
-    result += map[char] || char;
-  }
-  document.getElementById("outputText").value = result;
-}
-
-function copyText() {
-  const out = document.getElementById("outputText");
-  out.select();
-  document.execCommand("copy");
-  alert("Copied!");
-}
-
-function clearText() {
-  document.getElementById("inputText").value = "";
-  document.getElementById("outputText").value = "";
-}
-</script>
-
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Superscript Generator</h1>
+            <p class="subtitle">Transform normal text to superscript instantly</p>
+        </header>
+        
+        <!-- Tool Container -->
+        <div class="tool-container">
+            <div class="tool-section">
+                <!-- Normal Text Section -->
+                <div class="text-container">
+                    <h2 class="section-title">Normal Text</h2>
+                    <div class="text-header">
+                        <div>Type or paste your text here. Example: <span style="color: #7f8c8d; font-style: italic;">x^2 + y^2 = z^2 or H2O</span></div>
+                        <div class="char-count">Characters: <span id="inputCharCount">0</span></div>
+                    </div>
+                    <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+                </div>
+                
+                <!-- Divider -->
+                <div class="divider"></div>
+                
+                <!-- Superscript Text Section -->
+                <div class="text-container">
+                    <h2 class="section-title">Superscript Text</h2>
+                    <div class="text-header">
+                        <div>Your superscript text will appear here</div>
+                        <div class="char-count">Characters: <span id="outputCharCount">0</span></div>
+                    </div>
+                    <textarea id="outputText" readonly></textarea>
+                </div>
+                
+                <!-- Buttons -->
+                <div class="button-container">
+                    <button class="btn btn-convert" id="convertBtn">
+                        <span>Convert to Superscript</span>
+                    </button>
+                    <button class="btn btn-copy" id="copyBtn">
+                        <span>Copy Output</span>
+                    </button>
+                    <button class="btn btn-clear" id="clearBtn">
+                        <span>Clear Text</span>
+                    </button>
+                    <button class="btn btn-example" id="exampleBtn">
+                        <span>Load Example</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Description Section -->
+        <div class="description-section">
+            <h2>About the Superscript Generator</h2>
+            <p>
+                The Superscript Generator is a free online tool that transforms standard text characters into their superscript equivalents. 
+                Superscript text appears slightly above the normal line and is smaller in size, commonly used in mathematical expressions, 
+                scientific notation, footnotes, and chemical formulas.
+            </p>
+            
+            <div class="example-box">
+                <div class="example-title">Example Conversion:</div>
+                <div class="example-text">Normal: x^2 + y^2 = z^2</div>
+                <div class="example-text sup-example">Superscript: x² + y² = z²</div>
+            </div>
+            
+            <h3>How to Use the Converter</h3>
+            <p>
+                1. Type or paste your text in the "Normal Text" field above.<br>
+                2. Click "Convert to Superscript" to transform your text.<br>
+                3. Copy the superscript result using the "Copy Output" button.<br>
+                4. Paste the superscript text into your document, website, or application.
+            </p>
+            
+            <h3>Common Use Cases</h3>
+            <div class="use-cases">
+                <div class="use-case">
+                    <h4>Mathematical Expressions</h4>
+                    <p>Convert exponents and powers in equations: 2³ = 8, (a+b)² = a² + 2ab + b²</p>
+                </div>
+                <div class="use-case">
+                    <h4>Scientific Formulas</h4>
+                    <p>Create chemical formulas: H₂O (water), CO₂ (carbon dioxide), C₆H₁₂O₆ (glucose)</p>
+                </div>
+                <div class="use-case">
+                    <h4>Footnotes & References</h4>
+                    <p>Add footnote indicators: The study concluded¹ that... Further research² suggests...</p>
+                </div>
+                <div class="use-case">
+                    <h4>Ordinal Numbers</h4>
+                    <p>Format ordinal indicators: 1ˢᵗ place, 2ⁿᵈ place, 3ʳᵈ place, 4ᵗʰ place</p>
+                </div>
+            </div>
+            
+            <h3>Supported Characters</h3>
+            <p>
+                Our converter supports all digits (0-9), lowercase letters (a-z), uppercase letters (A-Z), and common mathematical symbols 
+                (+, -, =, (, )). Characters not in this set will remain unchanged. The tool preserves spaces, line breaks, and formatting.
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <span id="currentYear"></span> Multitoosite. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Free online tool for converting text to superscript characters.</p>
+        </footer>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // DOM Elements
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const convertBtn = document.getElementById('convertBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const exampleBtn = document.getElementById('exampleBtn');
+        const inputCharCount = document.getElementById('inputCharCount');
+        const outputCharCount = document.getElementById('outputCharCount');
+        const toast = document.getElementById('toast');
+        const currentYear = document.getElementById('currentYear');
+        
+        // Superscript character mapping
+        const superscriptMap = {
+            '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', 
+            '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+            'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ', 'f': 'ᶠ', 
+            'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ', 'k': 'ᵏ', 'l': 'ˡ', 
+            'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ', 'p': 'ᵖ', 'q': 'ᵠ', 'r': 'ʳ', 
+            's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ', 'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 
+            'y': 'ʸ', 'z': 'ᶻ',
+            'A': 'ᴬ', 'B': 'ᴮ', 'C': 'ᶜ', 'D': 'ᴰ', 'E': 'ᴱ', 'F': 'ᶠ', 
+            'G': 'ᴳ', 'H': 'ᴴ', 'I': 'ᴵ', 'J': 'ᴶ', 'K': 'ᴷ', 'L': 'ᴸ', 
+            'M': 'ᴹ', 'N': 'ᴺ', 'O': 'ᴼ', 'P': 'ᴾ', 'Q': 'ᵠ', 'R': 'ᴿ', 
+            'S': 'ˢ', 'T': 'ᵀ', 'U': 'ᵁ', 'V': 'ⱽ', 'W': 'ᵂ', 'X': 'ˣ', 
+            'Y': 'ʸ', 'Z': 'ᶻ',
+            '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾'
+        };
+        
+        // Set current year in footer
+        currentYear.textContent = new Date().getFullYear();
+        
+        // Update character counters
+        function updateCharCounters() {
+            inputCharCount.textContent = inputText.value.length;
+            outputCharCount.textContent = outputText.value.length;
+        }
+        
+        // Show toast notification
+        function showToast(message, duration = 3000) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+        
+        // Convert text to superscript
+        function convertToSuperscript(text) {
+            let result = '';
+            
+            for (let char of text) {
+                if (superscriptMap[char]) {
+                    result += superscriptMap[char];
+                } else {
+                    // Keep spaces, line breaks, and unsupported characters
+                    result += char;
+                }
+            }
+            
+            return result;
+        }
+        
+        // Handle conversion
+        function handleConversion() {
+            const text = inputText.value;
+            
+            if (!text.trim()) {
+                showToast('Please enter some text to convert');
+                return;
+            }
+            
+            const superscriptText = convertToSuperscript(text);
+            outputText.value = superscriptText;
+            updateCharCounters();
+            
+            showToast('Text converted to superscript successfully!');
+        }
+        
+        // Copy output to clipboard
+        function copyToClipboard() {
+            if (!outputText.value.trim()) {
+                showToast('No superscript text to copy');
+                return;
+            }
+            
+            outputText.select();
+            outputText.setSelectionRange(0, 99999);
+            
+            try {
+                navigator.clipboard.writeText(outputText.value)
+                    .then(() => {
+                        showToast('Superscript text copied to clipboard!');
+                    })
+                    .catch(err => {
+                        // Fallback for older browsers
+                        document.execCommand('copy');
+                        showToast('Superscript text copied to clipboard!');
+                    });
+            } catch (err) {
+                document.execCommand('copy');
+                showToast('Superscript text copied to clipboard!');
+            }
+        }
+        
+        // Clear all text
+        function clearText() {
+            inputText.value = '';
+            outputText.value = '';
+            updateCharCounters();
+            inputText.focus();
+            showToast('Text cleared');
+        }
+        
+        // Load example text
+        function loadExample() {
+            const examples = [
+                "x^2 + y^2 = z^2",
+                "E = mc^2 (Einstein's mass-energy equivalence)",
+                "Chemical formulas: H2O, CO2, CH4, C6H12O6",
+                "Quadratic formula: x = [-b ± √(b^2 - 4ac)] / 2a",
+                "Footnotes: According to recent studies^1, the results^2 indicate...",
+                "Ordinal numbers: 1st, 2nd, 3rd, 4th, 5th",
+                "Math: (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3"
+            ];
+            
+            const randomIndex = Math.floor(Math.random() * examples.length);
+            inputText.value = examples[randomIndex];
+            handleConversion();
+            showToast('Example text loaded');
+        }
+        
+        // Event Listeners
+        convertBtn.addEventListener('click', handleConversion);
+        copyBtn.addEventListener('click', copyToClipboard);
+        clearBtn.addEventListener('click', clearText);
+        exampleBtn.addEventListener('click', loadExample);
+        
+        // Update character count on input
+        inputText.addEventListener('input', updateCharCounters);
+        
+        // Auto-convert as user types (with delay)
+        let conversionTimeout;
+        inputText.addEventListener('input', () => {
+            clearTimeout(conversionTimeout);
+            
+            // Only auto-convert if there's text
+            if (inputText.value.trim()) {
+                conversionTimeout = setTimeout(handleConversion, 800);
+            }
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + Enter to convert
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                handleConversion();
+            }
+            
+            // Ctrl/Cmd + C to copy (when output has content)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c' && outputText.value) {
+                copyToClipboard();
+            }
+            
+            // Escape to clear
+            if (e.key === 'Escape') {
+                clearText();
+            }
+        });
+        
+        // Initialize with example on first load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCharCounters();
+            
+            // Load example after a short delay on first visit
+            if (!localStorage.getItem('superscriptVisited')) {
+                setTimeout(() => {
+                    if (!inputText.value.trim()) {
+                        loadExample();
+                    }
+                }, 800);
+                localStorage.setItem('superscriptVisited', 'true');
+            }
+            
+            // Focus on input field
+            inputText.focus();
+        });
+    </script>
 </body>
 </html>
